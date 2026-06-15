@@ -38,3 +38,9 @@ Thumbs.db
 # Temp
 /tmp/
 *.tmp
+archive/
+snapshots/
+*.onnx
+*.pyc
+__pycache__/
+logs/

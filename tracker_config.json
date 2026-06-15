@@ -1,0 +1,69 @@
+{
+    "camera": {
+        "stream_url": "http://localhost:8080/snapshot/color",
+        "width": 640,
+        "height": 480
+    },
+    "tracking": {
+        "kp": 0.06,
+        "dead_zone": 15,
+        "min_move": 0.2,
+        "max_step": 4.0,
+        "min_interval": 0.02,
+        "ema_position": 0.5,
+        "ema_command": 0.7,
+        "confirm_frames": 5
+    },
+    "gimbal": {
+        "tilt_min": -60,
+        "tilt_max": 60,
+        "pan_min": -60,
+        "pan_max": 60
+    },
+    "kalman": {
+        "process_noise": 5,
+        "measurement_noise": 20,
+        "max_predict_frames": 30
+    },
+    "angle": {
+        "ema_alpha": 0.4,
+        "min_contour_area": 100
+    },
+    "color_hsv": {
+        "red_lower1": [
+            0,
+            80,
+            80
+        ],
+        "red_upper1": [
+            15,
+            255,
+            255
+        ],
+        "red_lower2": [
+            155,
+            80,
+            80
+        ],
+        "red_upper2": [
+            180,
+            255,
+            255
+        ]
+    },
+    "aruco": {
+        "dictionary": "DICT_6X6_250",
+        "marker_size_mm": 20.0,
+        "calibration_file": "/opt/medvision/calibration.json"
+    },
+    "yolo": {
+        "model_path": "/opt/medvision/yolov5s.onnx",
+        "input_size": 640,
+        "confidence": 0.3
+    },
+    "recording": {
+        "enabled": true,
+        "log_dir": "/opt/medvision/logs",
+        "csv_filename": "tracking_log.csv"
+    }
+}

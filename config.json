@@ -1,0 +1,43 @@
+{
+    "project": "MedVision",
+    "version": "0.1.0",
+    "camera": {
+        "width": 640,
+        "height": 480,
+        "fps": 30,
+        "format": "RGB888",
+        "hflip": false,
+        "vflip": false,
+        "rotate": 180
+    },
+    "gimbal": {
+        "servo1_pin": 19,
+        "servo2_pin": 18,
+        "min_angle": 0,
+        "max_angle": 180,
+        "center": 90,
+        "min_pulse": 500,
+        "max_pulse": 2500,
+        "pan_min": 0,
+        "pan_max": 180,
+        "tilt_min": 0,
+        "tilt_max": 180
+    },
+    "api": {
+        "base_url": "https://api.xiaomimimo.com/v1",
+        "model": "mimo-v2-omni",
+        "api_key": "sk-cuep8vloqzmcnvkd4sgpk7wb6lo8pog30sgeb9p9vmsu54ps",
+        "max_retries": 3,
+        "timeout": 60
+    },
+    "detection": {
+        "confidence_threshold": 0.5,
+        "target_classes": [
+            "scissors",
+            "forceps",
+            "needle_holder"
+        ],
+        "keyframe_interval": 3,
+        "motion_threshold": 30
+    }
+}
