@@ -1,21 +1,18 @@
-# MedVision Dependencies
+# MedVision Dependencies (Cross-platform)
 # Core
 opencv-python>=4.8.0
 numpy>=1.24.0
 flask>=3.0.0
 requests>=2.31.0
 
+# Serial (Linux: pyserial, Windows: pyserial)
+pyserial>=3.5
+
 # Camera & Depth
 openni>=2.3.0
 
-# Optional: Orbbec Astra raw depth driver
-# orbbec-astra-raw>=0.2.0
-
 # Optional: ONNX runtime for YOLO
-onnxruntime>=1.16.0
-
-# Optional: Web UI
-# express (via npm in harness/web/)
+# onnxruntime>=1.16.0
 
 # Development
 pytest>=7.0.0

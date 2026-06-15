@@ -1,14 +1,21 @@
-"""Camera Tool - V4L2 capture + optional OpenNI2 depth."""
-import time, numpy as np, cv2
-
+"""Camera Tool - Cross-platform (Linux V4L2 + Windows DirectShow)."""
+import os, sys, time, numpy as np, cv2
 
 class CameraTool:
     def __init__(self, config):
-        self.cap = cv2.VideoCapture(config.get("device_id", 0))
+        device_id = config.get("device_id", 0)
+        self.cap = cv2.VideoCapture(device_id)
         self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, config.get("width", 640))
         self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, config.get("height", 480))
         self.cap.set(cv2.CAP_PROP_BUFFERSIZE, config.get("buffer_size", 1))
         time.sleep(0.3)
+        if not self.cap.isOpened():
+            # Try common Windows indices
+            for idx in [0, 1, 2]:
+                self.cap = cv2.VideoCapture(idx)
+                if self.cap.isOpened():
+                    print("[Camera] Found on device index %d" % idx)
+                    break
 
     def is_open(self):
         return self.cap.isOpened()
@@ -16,22 +23,6 @@ class CameraTool:
     def capture(self):
         ret, bgr = self.cap.read()
         return bgr if ret else None
-
-    def get_depth(self):
-        """Capture depth via OpenNI2 (separate call, slow)."""
-        from openni import openni2
-        openni2.initialize()
-        dev = openni2.Device.open_any()
-        ds = dev.create_depth_stream()
-        ds.start()
-        time.sleep(0.5)
-        df = ds.read_frame()
-        dd = np.array(df.get_buffer_as_triplet()).reshape([480, 640, 2])
-        depth = np.asarray(dd[:, :, 0], "float32") + np.asarray(dd[:, :, 1], "float32") * 255
-        ds.stop()
-        dev.close()
-        openni2.unload()
-        return depth
 
     def close(self):
         self.cap.release()
