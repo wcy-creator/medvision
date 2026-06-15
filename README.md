@@ -1,0 +1,1 @@
+MedVision 是一套基于Orbbec Astra 3D 深度摄像头的手术器械视觉感知系统。它能实时追踪手术器械（颜色检测 + Kalman 预测） 测量开合角度（PCA + EMA 平滑，±5° 精度） 3D 点云扫描（AI 定位 + 深度测量 + PLY 导出） 云台自动跟随（CLB-S25 舵机，PID 双轴控制） 实时视频流（低延迟 HTTP，浏览器查看） LLM 集成（MiMo/OpenAI 视觉分析）
