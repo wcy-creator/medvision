@@ -47,8 +47,8 @@ class AngleTool:
             return None
         [vx1, vy1, _, _] = cv2.fitLine(s1, cv2.DIST_L2, 0, 0.01, 0.01)
         [vx2, vy2, _, _] = cv2.fitLine(s2, cv2.DIST_L2, 0, 0.01, 0.01)
-        a1 = math.degrees(math.atan2(float(vy1), float(vx1)))
-        a2 = math.degrees(math.atan2(float(vy2), float(vx2)))
+        a1 = math.degrees(math.atan2(vy1.item(), vx1.item()))
+        a2 = math.degrees(math.atan2(vy2.item(), vx2.item()))
         ca = abs(a1 - a2)
         if ca > 180: ca = 360 - ca
         if ca > 90: ca = 180 - ca
