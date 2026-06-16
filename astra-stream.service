@@ -1,0 +1,15 @@
+[Unit]
+Description=MedVision Astra Stream Server
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/opt/medvision
+ExecStart=/usr/bin/python3 /opt/medvision/astra_stream_v5.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

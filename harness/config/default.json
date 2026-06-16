@@ -1,0 +1,44 @@
+{
+    "camera": {
+        "device_id": 0,
+        "width": 640,
+        "height": 480,
+        "buffer_size": 1
+    },
+    "depth": {
+        "max_depth_mm": 4000,
+        "fx": 580.0,
+        "fy": 580.0,
+        "cx": 320.0,
+        "cy": 240.0
+    },
+    "gimbal": {
+        "port": "/dev/ttyUSB0",
+        "baudrate": 115200,
+        "pan_min": -60,
+        "pan_max": 60,
+        "tilt_min": -60,
+        "tilt_max": 60,
+        "pan_offset": 20,
+        "tilt_offset": -75
+    },
+    "tracking": {
+        "kp": 0.05,
+        "dead_zone": 20,
+        "max_step": 2.5,
+        "ema_alpha": 0.4,
+        "confirm_frames": 5
+    },
+    "detection": {
+        "min_contour_area": 100,
+        "hsv_red_lower1": [0, 80, 80],
+        "hsv_red_upper1": [15, 255, 255],
+        "hsv_red_lower2": [155, 80, 80],
+        "hsv_red_upper2": [180, 255, 255]
+    },
+    "angle": {
+        "ema_alpha": 0.4,
+        "calib_frames": 30
+    },
+    "log_dir": "/opt/medvision/harness/logs"
+}

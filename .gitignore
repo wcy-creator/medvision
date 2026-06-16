@@ -1,0 +1,47 @@
+__pycache__/
+*.pyc
+*.pyo
+*.so
+*.o
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data
+data/memory.db
+data/sessions/
+logs/
+*.log
+
+# Config (secrets)
+.env
+config/api.json
+
+# Models
+models/*.onnx
+
+# Node.js
+node_modules/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+/tmp/
+*.tmp
+archive/
+snapshots/
+*.onnx
+*.pyc
+__pycache__/
+logs/
+.github/workflows
