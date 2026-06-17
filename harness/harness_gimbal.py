@@ -53,3 +53,9 @@ class GimbalTool:
 
     def close(self):
         self.g.close()
+
+    def nudge_fast(self, dpan, dtilt, speed=400):
+        """Fast nudge - skip angle query (non-blocking)."""
+        new_pan = max(self.g.PAN_MIN, min(self.g.PAN_MAX, self.g._pan + dpan))
+        new_tilt = max(self.g.TILT_MIN, min(self.g.TILT_MAX, self.g._tilt + dtilt))
+        self.g.move_to_fast(pan=new_pan, tilt=new_tilt, velocity=speed)
