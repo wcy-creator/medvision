@@ -75,8 +75,12 @@ class NcnNDetector:
         if len(out.shape) == 3:
             out = out.reshape(out.shape[0], -1)
 
+        # NCNN output is (84, 8400) - transpose to (8400, 84)
+        if out.shape[0] < out.shape[1]:
+            out = out.T  # Now (8400, 84): each row is [x,y,w,h,conf,80_classes]
+
         results = []
-        for det in out.T if out.shape[0] > out.shape[1] else out:
+        for det in out:
             obj_conf = det[4]
             class_scores = det[5:]
             class_id = int(np.argmax(class_scores))
